@@ -48,7 +48,7 @@ else:
     print("Part time Daily Employee wage  is : ", total_wage)
 
 
-# Use Case 5 solving use case statement
+# Use Case-4 solving use case statement
 print("\tWelcome to Employee Wage Computation ")
 
 while True:
@@ -127,5 +127,32 @@ else:
     logging.info(result)
     logging.info("new request process completed...!")
     print("one month Employee wages  is : ", result)
+
+
+# Use Case-6 Calculate wages till a condition of total working days and hours reached for a month
+try:
+    max_days = int(input("enter 'max working days' for month :"))
+    max_hours = int(input("enter 'max working  hours' in month :"))
+    day_hours = max_hours // max_days
+except Exception as message:
+    print("please enter valid input...! you need to enter only number !")
+    logging.exception(message)
+else:
+    wage_per_hour = 20
+    max_days_count = 0
+    max_hours_cont = 0
+    total_wage = 0
+
+    while True:
+        if max_hours_cont == max_hours and max_days_count == max_days:
+            print("max days and hours reached ")
+            break
+
+        total_wage += day_hours * wage_per_hour
+        max_hours_cont += day_hours
+        max_days_count += 1
+
+    print("The total wages for", max_days, "days and ", max_hours, "hours is : ", total_wage)
+    logging.info(total_wage)
 
 
