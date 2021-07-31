@@ -19,7 +19,7 @@ else:
     print("Employee is Absent.....!")
 
 
-# Use Case-2 calculate daily employee waga
+# Use Case-2 calculate daily employee wage
 try:
     day_hours = int(input(" Please enter working hours for one day ! : "))
     wage_per_hour = int(input(" Please enter wage for hour ! : "))
@@ -31,3 +31,18 @@ else:
     logging.info(total_wage)
     logging.info("new request process completed...!")
     print("Daily Employee wage  is : ", total_wage)
+
+
+# Use Case-3 calculate daily part_time employee wage
+try:
+    part_time_day_hours = int(input(
+        " Please enter working 'PartTime' hours for  one day ! : "))
+    wage_per_hour = int(input(" Please enter wage for hour ! : "))
+except Exception as massage:
+    print("Please enter valid input , you need to enter number only......!")
+    logging.info(massage)
+else:
+    total_wage = part_time_day_hours * wage_per_hour
+    logging.info(total_wage)
+    logging.info("new request process completed...!")
+    print("Part time Daily Employee wage  is : ", total_wage)
