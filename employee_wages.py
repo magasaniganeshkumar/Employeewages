@@ -156,3 +156,35 @@ else:
     logging.info(total_wage)
 
 
+# Use Case-6 refactor the code to write a function to get work hours
+def get_hours():
+    try:
+        day_hours = int(input(
+            " Please enter working hours for one day less than or equal to 10 ! : "))
+
+        total_hours = 0
+    except Exception as message:
+        print(message)
+        logging.info(message)
+    else:
+        if day_hours <= 10:
+            present_count = 0
+            absent_count = 0
+            for day in range(30):
+                random_number = random.randint(0, 1)
+                if random_number == 1:
+                    total_hours += day_hours
+                    present_count += 1
+                else:
+                    absent_count += 1
+
+            logging.info(total_hours)
+            print("number of days employee 'Absent' in one month : ", absent_count)
+            print("number of days employee 'Present' in  one month : ", present_count)
+            print("the total working hours an employee for a month :", total_hours)
+        else:
+            print("Please enter working  hours less than or equal to 10 only.....!  ")
+
+
+print(get_hours())
+
