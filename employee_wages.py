@@ -48,7 +48,7 @@ else:
     print("Part time Daily Employee wage  is : ", total_wage)
 
 
-# solving use case statement
+# Use Case 5 solving use case statement
 print("\tWelcome to Employee Wage Computation ")
 
 while True:
@@ -110,3 +110,22 @@ while True:
                 "New Employee wage  request processing completed.....!")
             break
 print("Thanks for using our application .....!")
+
+
+# Use Case-5 Calculating wages for a month
+try:
+    day_hours = int(input(" Please enter working hours for one day ! : "))
+    wage_per_hour = int(input(" Please enter wage for hour ! : "))
+    wage_per_month = 0
+    work_days = int(input(" Please enter working days for month ! : "))
+except Exception as massage:
+    print("Please enter valid input , you need to enter number only......!")
+    logging.info(massage)
+else:
+    total_wage = day_hours * wage_per_hour
+    result = work_days * total_wage
+    logging.info(result)
+    logging.info("new request process completed...!")
+    print("one month Employee wages  is : ", result)
+
+
