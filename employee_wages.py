@@ -54,7 +54,7 @@ print("\tWelcome to Employee Wage Computation ")
 while True:
     try:
         print("you please choose below options to process : ")
-        print("""1.daily employee Wage
+        print("""\t1.daily employee Wages
                  2.daily wages for PartTime employee
                  3.exit
               """)
@@ -156,12 +156,10 @@ else:
     logging.info(total_wage)
 
 
-# Use Case-6 refactor the code to write a function to get work hours
+# Use Case-7 refactor the code to write a function to get work hours
 def get_hours():
     try:
-        day_hours = int(input(
-            " Please enter working hours for one day less than or equal to 10 ! : "))
-
+        day_hours = int(input(" Please enter working hours for one day less than or equal to 10 ! : "))
         total_hours = 0
     except Exception as message:
         print(message)
@@ -177,7 +175,6 @@ def get_hours():
                     present_count += 1
                 else:
                     absent_count += 1
-
             logging.info(total_hours)
             print("number of days employee 'Absent' in one month : ", absent_count)
             print("number of days employee 'Present' in  one month : ", present_count)
@@ -187,4 +184,43 @@ def get_hours():
 
 
 print(get_hours())
+
+
+# Use Case-8 Store the Daily Wage along with the Total Wage
+def month_wage():
+    while True:
+        try:
+            day_hours = int(input(
+                " Please enter working hours for one day less than or equal to 10 ! : "))
+            wage_per_hour = int(input(" Please enter wage for hour ! : "))
+        except Exception as massage:
+            print("Please enter valid input , you need to enter number only......!")
+            logging.info(massage)
+        else:
+            dictionary = {}
+            daily_wage = day_hours * wage_per_hour
+            present_count = 0
+            absent_count = 0
+            if day_hours <= 10:
+                for day in range(1, 31):
+                    random_number = random.randint(0, 1)
+                    if random_number == 1:
+                        present_count += 1
+                    else:
+                        absent_count += 1
+            else:
+                print("Please enter working  hours less than or equal to 10 only.....!  ")
+                daily_wage = 0
+
+            total_wage = present_count * daily_wage
+            dictionary['absent_days'] = absent_count
+            dictionary['present_days'] = present_count
+            dictionary['daily_wage'] = daily_wage
+            dictionary['monthly_wage'] = total_wage
+            for key, value in dictionary.items():
+                print('\t', key, '\t', value)
+        break
+
+
+print(month_wage())
 
