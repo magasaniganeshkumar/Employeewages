@@ -8,8 +8,8 @@ logging.basicConfig(filename="employee_waga.log",
                     datefmt="%d/%m/%y %I:%M:%S:%p")
 logging.info("New Employee wage request came !")
 
-# Displaying wecome message  to employee wage computation
-print("\tWelcome to Emplopyee Waga Computation ")
+# Displaying welcome message  to employee wage computation
+print("\tWelcome to Employee Wage Computation ")
 
 # Use Case-1 checking employee is present or absent
 random_number = random.randint(0, 1)
@@ -193,9 +193,9 @@ def month_wage():
             day_hours = int(input(
                 " Please enter working hours for one day less than or equal to 10 ! : "))
             wage_per_hour = int(input(" Please enter wage for hour ! : "))
-        except Exception as massage:
+        except Exception as message:
             print("Please enter valid input , you need to enter number only......!")
-            logging.info(massage)
+            logging.info(message)
         else:
             dictionary = {}
             daily_wage = day_hours * wage_per_hour
@@ -222,5 +222,56 @@ def month_wage():
         break
 
 
+print(month_wage())
+
+
+# Use Case-9 Store the Daily Wage and day wage along with the Total month Wages
+# define a function to display Daily Wage and day wage along with the Total month Wages
+def month_wage():
+    # until condition False we run this while loop
+    while True:
+        try:
+            # taking input from the user and handle exceptions
+            day_hours = int(input(
+                " Please enter working hours for one day less than or equal to 10 ! : "))
+            wage_per_hour = int(input(" Please enter wage for hour ! : "))
+        except Exception as message:
+            print("Please enter valid input , you need to enter number only......!")
+            logging.info(message)
+        # if there is no exception else block will run
+        else:
+            # define one empty dictionary to store employee wage details
+            dictionary = {}
+            # calculating daily wage
+            daily_wage = day_hours * wage_per_hour
+            present_count = 0
+            absent_count = 0
+            # counting employee  present days and absent days
+            if day_hours <= 10:
+                # days counting in one month
+                for day in range(1, 31):
+                    random_number = random.randint(0, 1)
+                    if random_number == 1:
+                        present_count += 1
+                    else:
+                        absent_count += 1
+            else:
+                # if user enter more than 10 hours one day else block will execute
+                print("Please enter working  hours less than or equal to 10 only.....!  ")
+                daily_wage = 0
+            # calculating total wage in month
+            total_wage = present_count * daily_wage
+            # storing employee details in dictionary by using keys
+            dictionary['absent_days'] = absent_count
+            dictionary['present_days'] = present_count
+            dictionary['daily_wage'] = daily_wage
+            dictionary['monthly_wage'] = total_wage
+            # printing key values by using dictionary items method
+            for key, value in dictionary.items():
+                print('\t', key, '\t', value)
+        break
+
+
+# function calling
 print(month_wage())
 
